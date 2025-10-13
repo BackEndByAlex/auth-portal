@@ -10,7 +10,7 @@ import expressLayouts from 'express-ejs-layouts'
 import dotenv from 'dotenv'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import router from './routes/routes.js'
+import router from './routes/Pageroutes.js'
 
 dotenv.config()
 
