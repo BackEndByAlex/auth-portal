@@ -1,0 +1,20 @@
+{
+  "name": "taskboard-lite",
+  "version": "1.0.0",
+  "description": "Educational Kanban board app demonstrating JWT authentication in practice. Built for school project to showcase my token-auth module.",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "author": "Alexandru C.A",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-ejs-layouts": "^2.5.1",
+    "express-http-context": "^2.0.1",
+    "token-auth-edu": "^1.0.3"
+  }
+}
