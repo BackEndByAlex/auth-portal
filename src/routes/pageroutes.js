@@ -1,16 +1,16 @@
 import express from 'express'
 
 import { PageController } from '../controller/pageController.js'
-import { AuthMiddleware } from '../middleware/authMiddleware.js'
+// import { AuthMiddleware } from '../middleware/authMiddleware.js'
 
-const router = express.Router()
+const pageRoutes = express.Router()
 
 const pageController = new PageController()
 
-router.get('/', (req, res) => pageController.renderHomePage(req, res))
-router.get('/login', (req, res) => pageController.renderLoginPage(req, res))
-router.get('/register', (req, res) => pageController.renderRegisterPage(req, res))
+pageRoutes.get('/', (req, res) => pageController.renderHomePage(req, res))
+pageRoutes.get('/login', (req, res) => pageController.renderLoginPage(req, res))
+pageRoutes.get('/register', (req, res) => pageController.renderRegisterPage(req, res))
 
-router.get('/index', AuthMiddleware.authenticate, (req, res) => pageController.renderIndexPage(req, res))
+// router.get('/index', AuthMiddleware.authenticate, (req, res) => pageController.renderIndexPage(req, res))
 
-export default router
+export default pageRoutes
