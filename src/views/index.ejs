@@ -3,13 +3,23 @@
 <main class="landing-page">
   <div class="container">
     <header class="hero">
-      <h1>TaskBoard Lite</h1>
-      <p class="subtitle">Organize your tasks</p>
+      <h1>Auth Portal</h1>
+      <p class="subtitle">Welcome, <%= username %>!</p>
     </header>
 
+    <div class="content">
+      <p>You are successfully logged in.</p>
+      
+      <div class="token-info">
+        <h2>JWT Token Features Demo</h2>
+        <p>Your session is protected by a JWT token.</p>
+      </div>
+    </div>
+
     <div class="auth-buttons">
-      <a href="/login" class="btn btn-login">Login</a>
-      <a href="/register" class="btn btn-register">Register</a>
+      <form method="POST" action="/auth/logout">
+        <button type="submit" class="btn btn-logout">Logout</button>
+      </form>
     </div>
   </div>
 </main>

@@ -6,6 +6,12 @@
       <h1>Create Account</h1>
     </header>
 
+    <% if (error) { %>
+      <div class="error-message">
+        <%= error %>
+      </div>
+    <% } %>
+
     <form class="auth-form" method="POST" action="/auth/register">
       <div class="form-group">
         <label for="username">Username</label>

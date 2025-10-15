@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="./css/index.css">
+
+<main class="landing-page">
+  <div class="container">
+    <header class="hero">
+      <h1>Auth Portal</h1>
+      <p class="subtitle">Secure Authentication System</p>
+    </header>
+
+    <% if (error) { %>
+      <div class="error-message">
+        <%= error %>
+      </div>
+    <% } %>
+
+    <div class="auth-buttons">
+      <a href="/login" class="btn btn-login">Login</a>
+      <a href="/register" class="btn btn-register">Register</a>
+    </div>
+  </div>
+</main>
