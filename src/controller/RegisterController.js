@@ -1,4 +1,4 @@
-export class AuthenticateController {
+export class RegisterController {
   static #COOKIE_MAX_AGE = 3600 // 1 hour
   static #COOKIE_NAME = 'authToken'
   #authService
@@ -44,10 +44,10 @@ export class AuthenticateController {
   }
 
   #setAuthenticationCookie (res, token) {
-    res.cookie(AuthenticateController.#COOKIE_NAME, token, {
+    res.cookie(RegisterController.#COOKIE_NAME, token, {
       httpOnly: true,
       secure: true,
-      maxAge: AuthenticateController.#COOKIE_MAX_AGE
+      maxAge: RegisterController.#COOKIE_MAX_AGE
     })
   }
 
