@@ -1,7 +1,7 @@
 import express from 'express'
 
 import { PageController } from '../controller/pageController.js'
-import { AuthMiddleware } from '../middleware/authMIddleware.js'
+import { AuthMiddleware } from '../middleware/authMiddleware.js'
 
 const pageRoutes = express.Router()
 
