@@ -1,7 +1,7 @@
 import express from 'express'
 
 import authRoutes from './authRoutes.js'
-import pageRoutes from './Pageroutes.js'
+import pageRoutes from './pageroutes.js'
 
 const router = express.Router()
 
