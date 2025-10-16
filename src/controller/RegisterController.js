@@ -1,10 +1,10 @@
 export class RegisterController {
   static #COOKIE_MAX_AGE = 3600 // 1 hour
   static #COOKIE_NAME = 'authToken'
-  #authService
+  #registerService
 
-  constructor(authService) {
-    this.#authService = authService
+  constructor(registerService) {
+    this.#registerService = registerService
   }
 
   handleRegister (req, res) {
@@ -14,7 +14,7 @@ export class RegisterController {
       this.#validateRegistrationInput(username, password, confirmPassword)
 
 
-      const token = this.#authService.registerUser(username, password)
+      const token = this.#registerService.registerUser(username, password)
       this.#setAuthenticationCookie(res, token)
 
       this.#redirectToLogin(res)

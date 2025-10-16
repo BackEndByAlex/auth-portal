@@ -1,7 +1,7 @@
 import { issueToken, verifyToken, decodeToken, revokeToken, refreshToken, rotateKey  } from "token-auth-edu"
 import { User } from "../models/user.js"
 
-export class AuthService {
+export class RegisterService {
   #userRepository
   #tokenTtlSeconds
 
