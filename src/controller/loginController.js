@@ -44,6 +44,6 @@ export class LoginController {
   }
 
   #redirectToIndex(res) {
-    res.redirect('index')
+    res.redirect('/index')
   }
 }

@@ -8,6 +8,7 @@
 import express from 'express'
 import expressLayouts from 'express-ejs-layouts'
 import dotenv from 'dotenv'
+import cookieParser from 'cookie-parser'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import router from './routes/headRoutes.js'
@@ -21,6 +22,7 @@ try {
   // Create Express application.
   const app = express()
   app.use(express.json())
+  app.use(cookieParser())
 
   // Set the base URL to use for all relative URLs in a document.
   const baseURL = process.env.BASE_URL || '/'

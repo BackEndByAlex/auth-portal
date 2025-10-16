@@ -1,4 +1,4 @@
-import { issueToken, verifyToken, decodeToken, revokeToken, refreshToken, rotateKey  } from "token-auth-edu"
+import { issueToken } from "token-auth-edu"
 import { User } from "../models/user.js"
 
 export class RegisterService {
@@ -7,7 +7,7 @@ export class RegisterService {
 
   constructor(userRepository) {
     this.#userRepository = userRepository
-    this.#tokenTtlSeconds = 3600
+    this.#tokenTtlSeconds = 3600 // 1 hour
   }
 
   registerUser (username, password) {
@@ -32,5 +32,7 @@ export class RegisterService {
   #issueTokenForUser (user) {
     const payload = { username: user.getUsername() }
     return issueToken(payload, this.#tokenTtlSeconds)
+
+
   }
 }

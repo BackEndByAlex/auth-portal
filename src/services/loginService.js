@@ -1,11 +1,12 @@
-import { issueToken, verifyToken, decodeToken, revokeToken, refreshToken, rotateKey  } from "token-auth-edu"
+import { issueToken } from "token-auth-edu"
+
 export class LoginService {
   #userRepository
   #tokenTtlSeconds
 
   constructor(userRepository) {
     this.#userRepository = userRepository
-    this.#tokenTtlSeconds = 3600000 // 1 hour
+    this.#tokenTtlSeconds = 3600 // 1 hour
   }
 
   loginUser(username, password) {
