@@ -1,3 +1,7 @@
+
+/**
+ * A representation of a user in the system.
+ */
 export class User {
   #username
   #passwordHash

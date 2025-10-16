@@ -1,3 +1,6 @@
+/**
+ * Use user credentials and login service to authenticate user.
+ */
 export class LoginController {
   static #MAX_AGE = 3600000 // 1 hour
   static #COOKIE_NAME = 'authToken'
@@ -7,6 +10,10 @@ export class LoginController {
     this.#loginService = loginService
   }
 
+  /**
+   * Handles user login requests.
+   *
+   */
   handleLogin(req, res) {
     try {
       const { username, password } = req.body

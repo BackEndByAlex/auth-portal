@@ -1,11 +1,16 @@
 import { verifyToken } from "token-auth-edu"
 
+/**
+ * A middle man protecting routes that require authentication.
+ */
 export class AuthMiddleware {
 
+  /**
+   * Check if the request has a valid authentication token.
+   */
   static authenticate(req, res, next) {
     try { 
       const token = req.cookies.authToken
-
 
       AuthMiddleware.#validateToken(token)
 

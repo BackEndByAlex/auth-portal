@@ -1,3 +1,6 @@
+/**
+ * Render various pages.
+ */
 export class PageController {
 
   renderHomePage (req, res) {

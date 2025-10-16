@@ -1,5 +1,8 @@
 import { decodeToken, revokeToken } from "token-auth-edu"
 
+/**
+ * Revoke authentication tokens for users upon logout.
+ */
 export class LogoutService {
 
   logoutUser (token, reason = 'User logged out') {

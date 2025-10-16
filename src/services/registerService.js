@@ -1,6 +1,9 @@
 import { issueToken } from "token-auth-edu"
 import { User } from "../models/user.js"
 
+/**
+ * Issue authentication tokens for users upon successful registration.
+ */
 export class RegisterService {
   #userRepository
   #tokenTtlSeconds
@@ -10,6 +13,12 @@ export class RegisterService {
     this.#tokenTtlSeconds = 3600 // 1 hour
   }
 
+  /**
+   * Registers a new user and issues an authentication token.
+   * @param {string} username
+   * @param {string} password
+   * @return {string} The authentication token.
+   */
   registerUser (username, password) {
     this.#ensureUserDoesNotExist(username)
 
@@ -32,7 +41,5 @@ export class RegisterService {
   #issueTokenForUser (user) {
     const payload = { username: user.getUsername() }
     return issueToken(payload, this.#tokenTtlSeconds)
-
-
   }
 }

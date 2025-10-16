@@ -1,3 +1,4 @@
+// Flash message fade out after 8 seconds
 setTimeout(() => {
   const flash = document.querySelector('#flash-message')
   if (flash) {

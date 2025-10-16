@@ -1,3 +1,9 @@
+/**
+ * Users can register by providing a username, password, and confirming the password.
+ * 
+ * Warning: Data is stored in-memory and will be lost when the server restarts.
+ * This is for demonstration purposes for token-auth-edu package.
+ */
 export class RegisterController {
   static #COOKIE_MAX_AGE = 3600000 // 1 hour
   static #COOKIE_NAME = 'authToken'
@@ -7,6 +13,9 @@ export class RegisterController {
     this.#registerService = registerService
   }
 
+  /**
+   * Handles user registration requests.
+   */
   handleRegister (req, res) {
     try {
       const { username, password, confirmPassword } = req.body
@@ -14,7 +23,6 @@ export class RegisterController {
       this.#validateRegistrationInput(username, password, confirmPassword)
 
       this.#validatePasswordStrength(password)
-
 
       const token = this.#registerService.registerUser(username, password)
       this.#setAuthenticationCookie(res, token)
@@ -33,6 +41,10 @@ export class RegisterController {
     this.#ensurePasswordsMatch(password, confirmPassword)
   }
 
+  /**
+   * Validates the strength of the password.
+   * @param {string} password - User's password
+   */
   #validatePasswordStrength (password) {
     const minLength = 8
     const hasUpperCase = /[A-Z]/.test(password)

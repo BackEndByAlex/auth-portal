@@ -1,3 +1,6 @@
+/**
+ * Use token and logout service to log out user.
+ */
 export class LogoutController {
   static #COOKIE_NAME = 'authToken'
   #logoutService
@@ -6,6 +9,9 @@ export class LogoutController {
     this.#logoutService = logoutService
   }
 
+  /**
+   * Handles user logout requests.
+   */
   handleLogout (req, res) {
     try {
       const token = this.#getAuthenticationToken(req)
@@ -32,5 +38,4 @@ export class LogoutController {
   #redirectToHome(res) {
     res.redirect('../../')
   }
-
 }

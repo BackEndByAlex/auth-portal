@@ -1,5 +1,8 @@
 import { issueToken } from "token-auth-edu"
 
+/**
+ * Issue authentication tokens for users upon successful login.
+ */
 export class LoginService {
   #userRepository
   #tokenTtlSeconds
@@ -9,6 +12,13 @@ export class LoginService {
     this.#tokenTtlSeconds = 3600 // 1 hour
   }
 
+  /**
+   * Logs in a user and issues an authentication token.
+   *
+   * @param {string} username
+   * @param {string} password 
+   * @returns {string} The authentication token.
+   */
   loginUser(username, password) {
     const user = this.#userRepository.findByUsername(username)
 
