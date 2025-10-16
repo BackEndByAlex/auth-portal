@@ -1,5 +1,5 @@
 import { issueToken } from "token-auth-edu"
-import { User } from "../models/user.js"
+import { User } from "../models/User.js"
 
 /**
  * Issue authentication tokens for users upon successful registration.
