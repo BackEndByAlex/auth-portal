@@ -1,5 +1,6 @@
 export class AuthenticateController {
-  static #MAX_AGE = 3600 // 1 hour
+  static #COOKIE_MAX_AGE = 3600 // 1 hour
+  static #COOKIE_NAME = 'authToken'
   #authService
 
   constructor(authService) {
@@ -10,13 +11,13 @@ export class AuthenticateController {
     try {
       const { username, password, confirmPassword } = req.body
 
-      this.#isUserCredentialsValid(username, password, confirmPassword)
-      this.#isPasswordAndConfirmPasswordMatch(password, confirmPassword)
+      this.#validateRegistrationInput(username, password, confirmPassword)
 
-      const token = this.#createUser(username, password)
-      this.#setAuthCookie(res, token)
 
-      res.redirect('/login')
+      const token = this.#authService.registerUser(username, password)
+      this.#setAuthenticationCookie(res, token)
+
+      this.#redirectToLogin(res)
     }
     catch (error) {
       res.redirect(`/register?error=${encodeURIComponent(error.message)}`)
@@ -25,27 +26,32 @@ export class AuthenticateController {
 
   // Private Methods
 
-  #isUserCredentialsValid (username, password, confirmPassword) {
+  #validateRegistrationInput (username, password, confirmPassword) {
+    this.#ensureAllFieldsProvided(username, password, confirmPassword)
+    this.#ensurePasswordsMatch(password, confirmPassword)
+  }
+
+  #ensureAllFieldsProvided (username, password, confirmPassword) {
     if (!username || !password || !confirmPassword) {
       throw new Error('All fields are required')
     }
   }
 
-  #isPasswordAndConfirmPasswordMatch (password, confirmPassword) {
+  #ensurePasswordsMatch (password, confirmPassword) {
     if (password !== confirmPassword) {
-      throw new Error('Password and Confirm Password do not match')
+      throw new Error('Passwords do not match')
     }
   }
 
-  #createUser (username, password) {
-    return this.#authService.createUser(username, password)
-  }
-
-  #setAuthCookie (res, token) {
-    res.cookie('authToken', token, {
+  #setAuthenticationCookie (res, token) {
+    res.cookie(AuthenticateController.#COOKIE_NAME, token, {
       httpOnly: true,
       secure: true,
-      maxAge: AuthenticateController.#MAX_AGE
+      maxAge: AuthenticateController.#COOKIE_MAX_AGE
     })
+  }
+
+  #redirectToLogin (res) {
+    res.redirect('/login')
   }
 }
