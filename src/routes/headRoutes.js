@@ -5,6 +5,7 @@ import pageRoutes from './Pageroutes.js'
 
 const router = express.Router()
 
+// Combine all routes
 router.use('/', pageRoutes)
 router.use('/auth', authRoutes)
 

@@ -5,8 +5,10 @@ import { AuthMiddleware } from '../middleware/authMiddleware.js'
 
 const pageRoutes = express.Router()
 
+// Dependency Injection
 const pageController = new PageController()
 
+// Routes
 pageRoutes.get('/', (req, res) => 
   pageController.renderHomePage(req, res))
 pageRoutes.get('/login', (req, res) => 
