@@ -6,7 +6,6 @@ export class AuthMiddleware {
     try { 
       const token = req.cookies.authToken
 
-      console.log('AuthMiddleware: Retrieved token from cookies:', token)
 
       AuthMiddleware.#validateToken(token)
 
