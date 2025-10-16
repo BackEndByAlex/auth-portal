@@ -5,6 +5,8 @@
     <header class="hero">
       <h1>Auth Portal</h1>
       <p class="subtitle">Welcome, <%= username %>!</p>
+      <em class="subtitle">All data is stored in your browser's cookies.</em>
+      <p class="subtitle">When you log out, the token will be removed from your cookies.</p>
     </header>
 
     <div class="content">
@@ -13,6 +15,7 @@
       <div class="token-info">
         <h2>JWT Token Features Demo</h2>
         <p>Your session is protected by a JWT token.</p>
+        <p><strong>Token Expiry:</strong> The token expires in 60 minutes. After expiry, you will need to log in again.</p>
       </div>
     </div>
 
