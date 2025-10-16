@@ -3,8 +3,8 @@ import express from 'express'
 import { RegisterController } from '../controller/RegisterController.js'
 import { LoginController } from '../controller/loginController.js'
 
-import { RegisterService } from '../authMiddleware/registerService.js'
-import { LoginService } from '../authMiddleware/loginService.js'
+import { RegisterService } from '../services/registerService.js'
+import { LoginService } from '../services/loginService.js'
 
 import { UserRepository } from '../models/UserRepository.js'
 

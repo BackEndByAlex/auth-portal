@@ -1,10 +1,10 @@
 export class LoginController {
-  static #MAX_AGE = 3600 // 1 hour
+  static #MAX_AGE = 3600000 // 1 hour
   static #COOKIE_NAME = 'authToken'
-  #authService
+  #loginService
 
-  constructor(authService) {
-    this.#authService = authService
+  constructor(loginService) {
+    this.#loginService = loginService
   }
 
   handleLogin(req, res) {
@@ -13,10 +13,10 @@ export class LoginController {
 
       this.#validateLoginInput(username, password)
 
-      const token = this.#authService.authenticateUser(username, password)
+      const token = this.#loginService.loginUser(username, password)
       this.#setAuthenticationCookie(res, token)
 
-      this.#redirectToDashboard(res)
+      this.#redirectToIndex(res)
     }
     catch (error) {
       res.redirect(`/login?error=${encodeURIComponent(error.message)}`)
@@ -43,7 +43,7 @@ export class LoginController {
     })
   }
 
-  #redirectToDashboard(res) {
-    res.redirect('/index')
+  #redirectToIndex(res) {
+    res.redirect('index')
   }
 }

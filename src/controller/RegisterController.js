@@ -1,5 +1,5 @@
 export class RegisterController {
-  static #COOKIE_MAX_AGE = 3600 // 1 hour
+  static #COOKIE_MAX_AGE = 3600000 // 1 hour
   static #COOKIE_NAME = 'authToken'
   #registerService
 
