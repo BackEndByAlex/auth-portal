@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="./css/authPages.css">
+<script type="module" src="./js/flashtext.js"></script>
 
 <main class="auth-page">
   <div class="auth-container">
@@ -9,7 +10,7 @@
     </header>
 
     <% if (error) { %>
-      <div class="error-message">
+      <div class="error-message" id="flash-message">
         <%= error %>
       </div>
     <% } %>
