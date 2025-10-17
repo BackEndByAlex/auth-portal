@@ -71,7 +71,8 @@ export class RegisterController {
   #setAuthenticationCookie (res, token) {
     res.cookie(RegisterController.#COOKIE_NAME, token, {
       httpOnly: true,
-      secure: true,
+      secure: process.env.NODE_ENV === 'production', // Bara HTTPS i produktion
+      sameSite: 'strict',
       maxAge: RegisterController.#COOKIE_MAX_AGE
     })
   }
