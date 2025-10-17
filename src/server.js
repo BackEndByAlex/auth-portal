@@ -11,7 +11,7 @@ import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import router from './routes/headRoutes.js'
+import router from './routes/head-routes.js'
 
 dotenv.config()
 
