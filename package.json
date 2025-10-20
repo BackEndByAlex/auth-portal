@@ -7,7 +7,8 @@
   "license": "MIT",
   "author": "Alexandru C.A",
   "scripts": {
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "test": "vitest run tests/app.test.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.7",
@@ -16,6 +17,7 @@
     "express": "^5.1.0",
     "express-ejs-layouts": "^2.5.1",
     "express-http-context": "^2.0.1",
-    "token-auth-edu": "^1.0.3"
+    "token-auth-edu": "^1.0.3",
+    "vitest": "^3.2.4"
   }
 }
