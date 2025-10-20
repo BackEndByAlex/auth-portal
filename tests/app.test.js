@@ -55,3 +55,17 @@ describe('Controllers', () => {
     expect(res.redirect).toHaveBeenCalled()
   })
 })
+
+describe('Middleware', () => {
+  
+  it('AuthMiddleware - should authenticate valid token', () => {
+    const req = { cookies: { authToken: 'valid-token' } }
+    const res = { clearCookie: vi.fn(), redirect: vi.fn() }
+    const next = vi.fn()
+
+    AuthMiddleware.authenticate(req, res, next)
+
+    expect(req.user).toBeDefined()
+    expect(next).toHaveBeenCalled()
+  })
+})
