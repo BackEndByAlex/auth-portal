@@ -69,3 +69,36 @@ describe('Middleware', () => {
     expect(next).toHaveBeenCalled()
   })
 })
+
+
+describe('Services', () => {
+  
+  it('RegisterService - should register new user', () => {
+    const repo = new UserRepository()
+    const service = new RegisterService(repo)
+
+    const token = service.registerUser('newuser', '123456Aa')
+
+    expect(token).toBe('fake-token-123')
+    expect(repo.exists('newuser')).toBe(true)
+  })
+
+  it('LoginService - should login existing user', () => {
+    const repo = new UserRepository()
+    const user = new User('testuser', '123456Aa')
+    repo.save(user)
+    const service = new LoginService(repo)
+
+    const token = service.loginUser('testuser', '123456Aa')
+
+    expect(token).toBe('fake-token-123')
+  })
+
+  it('LogoutService - should logout user', () => {
+    const service = new LogoutService()
+
+    const result = service.logoutUser('fake-token-123')
+
+    expect(result).toBe(true)
+  })
+})
