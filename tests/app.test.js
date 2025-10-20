@@ -102,3 +102,23 @@ describe('Services', () => {
     expect(result).toBe(true)
   })
 })
+
+describe('Models', () => {
+  
+  it('User - should verify correct password', () => {
+    const user = new User('testuser', 'mypassword')
+
+    expect(user.verifyPassword('mypassword')).toBe(true)
+    expect(user.verifyPassword('wrongpassword')).toBe(false)
+  })
+
+  it('UserRepository - should save and find users', () => {
+    const repo = new UserRepository()
+    const user = new User('testuser', 'password')
+
+    repo.save(user)
+
+    expect(repo.exists('testuser')).toBe(true)
+    expect(repo.findByUsername('testuser')).toBe(user)
+  })
+})
