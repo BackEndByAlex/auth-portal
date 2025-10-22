@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { RegisterController } from '../controller/registerController.js'
+import { RegisterController } from '../controller/RegisterController.js'
 import { LoginController } from '../controller/loginController.js'
 import { LogoutController } from '../controller/logoutController.js'
 
