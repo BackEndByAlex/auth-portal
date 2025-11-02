@@ -8,15 +8,15 @@ export class AuthMiddleware {
   /**
    * Check if the request has a valid authentication token.
    */
-  static authenticate(req, res, next) {
+  authenticate(req, res, next) {
     try { 
       const token = req.cookies.authToken
 
-      AuthMiddleware.#validateToken(token)
+      this.#validateToken(token)
 
       const result = verifyToken(token)
 
-      AuthMiddleware.#tokenValid(result)
+      this.#tokenValid(result)
 
       req.user = result.payload
       next()
@@ -27,15 +27,15 @@ export class AuthMiddleware {
     }
   }
 
-  // Private static Methods
+  // Private Methods
 
-  static #validateToken(token) {
+  #validateToken(token) {
     if (!token) {
       throw new Error('No token provided')
     }
   }
 
-  static #tokenValid(result) {
+  #tokenValid(result) {
     if (!result.valid) {
       throw new Error('Invalid token')
     }

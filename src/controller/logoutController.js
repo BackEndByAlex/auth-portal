@@ -2,40 +2,27 @@
  * Use token and logout service to log out user.
  */
 export class LogoutController {
-  static #COOKIE_NAME = 'authToken'
   #logoutService
 
   constructor(logoutService) {
     this.#logoutService = logoutService
   }
 
-  /**
-   * Handles user logout requests.
-   */
-  handleLogout (req, res) {
+  handleLogout(inputData) {
     try {
-      const token = this.#getAuthenticationToken(req)
+      const { token } = inputData
 
       this.#logoutService.logoutUser(token)
 
-      this.#clearAuthCookie(res)
-      this.#redirectToHome(res)
+      return {
+        success: true,
+        redirectTo: '../../'
+      }
     } catch (error) {
-      res.status(500).json({ error: 'Internal server error' })
+      return {
+        success: false,
+        error: 'Internal server error'
+      }
     }
-  }
-
-  // private methods
-
-  #getAuthenticationToken(req) {
-    return req.cookies[LogoutController.#COOKIE_NAME]
-  }
-
-  #clearAuthCookie(res) {
-    res.clearCookie(LogoutController.#COOKIE_NAME)
-  }
-
-  #redirectToHome(res) {
-    res.redirect('../../')
   }
 }
